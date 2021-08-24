@@ -1,4 +1,3 @@
-import { reactive } from "vue";
 import { ActionTree } from "vuex";
 import { RootState } from "../types";
 import { CartMutations } from "./mutations";
