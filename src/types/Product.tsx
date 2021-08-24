@@ -3,6 +3,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
+  count: number;
   image: string;
   is_available: boolean;
 }

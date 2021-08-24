@@ -1,12 +1,16 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+import { RootState } from "./types";
+import { getters } from "./getters";
+import { cart } from "./Cart";
 
-export default createStore({
+export default createStore<RootState>({
   state: {
+    app_name: "FireGlasses 🔥",
   },
-  mutations: {
-  },
-  actions: {
-  },
+  getters,
+  mutations: {},
+  actions: {},
   modules: {
-  }
-})
+    cart,
+  },
+});

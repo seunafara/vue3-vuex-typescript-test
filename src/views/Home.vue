@@ -1,7 +1,10 @@
 <template>
-  <div class="pad bg-[#F9F9F9] min-h-screen">
-    <ProductsHeading />
-    <ProductsList :products="products" class="lg:w-[66%]" />
+  <div class=" bg-[#F9F9F9] min-h-screen pb-4">
+    <ProductsHeading class="pad" />
+    <div class="flex justify-between">
+      <ProductsList :products="products" class="pad lg:w-[66%]" />
+      <Cart class="w-[40%] lg:mr-2" />
+    </div>
   </div>
 </template>
 
@@ -12,10 +15,11 @@ import { defineComponent, ref } from "vue";
 // @ is an alias to /src
 import Products from "@/assets/data/products";
 import Product from "../types/Product";
+import Cart from "@/components/Cart.vue";
 
 export default defineComponent({
   name: "Home",
-  components: { ProductsHeading, ProductsList },
+  components: { ProductsHeading, ProductsList, Cart },
   setup() {
     const products = ref<Product[]>(Products.products);
 

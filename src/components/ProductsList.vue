@@ -1,10 +1,10 @@
 <template>
-  <div class="flex justify-between flex-wrap mt-4">
+  <div class="flex justify-between flex-wrap ">
     <!--Single Product-->
     <div
-      v-for="(product, i) in products"
-      :key="i"
-      class="px-5 py-3 flex flex-col bg-white shadow-sm w-full lg:w-[45%] mr-2 mb-4"
+      v-for="product in products"
+      :key="product.id"
+      class="px-5 py-3 flex flex-col bg-white shadow-sm w-full lg:w-[48%] mb-4"
     >
       <img class=" w-72 self-center " :src="product.image" alt="" />
       <h4 class="mt-2 font-montserrat text-lg font-bold text-gray-700">
@@ -17,7 +17,10 @@
         <p class="font-roboto text-base font-extrabold text-gray-900">
           ${{ product.price }}
         </p>
-        <button class="btn bg-gray-700 text-sm text-white">
+        <button
+          @click="addToCart(product)"
+          class="btn bg-gray-700 text-sm text-white"
+        >
           Add To Cart
         </button>
       </div>
@@ -27,7 +30,8 @@
 
 <script lang="ts">
 import Product from "@/types/Product";
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, toRef } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   props: {
@@ -36,8 +40,16 @@ export default defineComponent({
       type: Array as PropType<Product[]>,
     },
   },
-  // setup() {
-  // },
+  setup() {
+    const store = useStore();
+    const addToCart = (product: Record<string, any>) => {
+      // commit product or run action - do action
+
+      store.dispatch("addProduct", product);
+    };
+
+    return { addToCart };
+  },
 });
 </script>
 

@@ -4,7 +4,11 @@ import router from "./router";
 import store from "./store";
 import "./styles/app.css";
 
-createApp(App)
+const app = createApp(App);
+
+app.config.globalProperties.$store = store;
+
+app
   .use(store)
   .use(router)
   .mount("#app");
